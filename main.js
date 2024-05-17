@@ -16,10 +16,25 @@
     new WOW().init();
 
 
-    $(document).ready(function () {
-        // Remove existing sticky styles and set top to auto
-        $('.sticky-top').removeClass('bg-primary shadow-sm').css('top', 'auto');
-      });
+  $(document).ready(function () {
+  // Set initial styles for sticky header
+  $('.sticky-top').addClass('sticky-header').css('background-color', 'green');
+
+  // Function to handle scroll event and add/remove sticky class
+  function handleScroll() {
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop > 0) {
+      $('.sticky-top').addClass('sticky');
+    } else {
+      $('.sticky-top').removeClass('sticky');
+    }
+  }
+
+  // Call handleScroll on document ready and window scroll
+  handleScroll();
+  $(window).scroll(handleScroll);
+});
 
     // Facts counter
     $('[data-toggle="counter-up"]').counterUp({
